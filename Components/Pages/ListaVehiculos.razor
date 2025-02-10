@@ -1,7 +1,51 @@
 ﻿@page "/lista"
 @rendermode InteractiveServer
 
-<h3>ListaVehiculos</h3>
+<div class="card" style="padding:20px;">
+    <h3 style="text-align:center; margin-bottom: 53px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Lista de vehiculos</h3>
+<div style="display:flex; flex-direction:row;">
+    <div style="margin-right:10px;">
+        <label for="" class=""><strong>Nombre del auto</strong></label>
+        <select class="form-select" style="width: 450px;">
+            <option value="0">Seleccione</option>
+            <option value="1">Hyundai Sonata SE</option>
+            <option value="2">Lamborghini Urus</option>
+            <option value="3">Toyota Supra Mk4</option>
+            <option value="4">Camaro Zl1 1LE</option>
+            <option value="5">Kia Picanto Zenith</option>
+            <option value="6">Ford Bronco Raptor</option>
+            <option value="7">Mitsubishi Lancer Evo XI</option>
+            <option value="8">Tesla Model X</option>
+        </select>
+    </div>
+    <div>
+            <label for="" class=""><strong>Color del vehiculo</strong></label>
+        <select class="form-select" style=" width: 450px;">
+        <option value="0">Seleccione</option>
+        <option value="1">Rojo</option>
+        <option value="2">Amarillo</option>
+        <option value="3">Blanco</option>
+        <option value="4">Negro</option>
+        <option value="5">Naranja</option>
+        <option value="6">Azul</option>
+        <option value="7">Verde</option>
+        <option value="8">Plateado</option>
+    </select>
+    </div>
+
+</div>
+   <div style="text-align:center;"><button class="btn btn-primary" style="margin-top: 37px; width:25%;">Agregar</button></div>
+</div>
+
+<div class="card" style="padding:20px; margin-top: 32px; display:flex; flex-direction:row;">
+    <div class="card" style="padding:5px; margin-top: 4px;">
+        <label for="" class="">Nombre</label>
+        <p>Nombre</p>
+        <label for="" class="">Nombre</label>
+        <p>Nombre</p>
+        <button class="btn btn-danger">X</button>
+    </div>
+</div>
 
 @code {
 

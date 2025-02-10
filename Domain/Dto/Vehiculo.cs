@@ -5,8 +5,6 @@
         public string Nombre {  get; set; }
         public string Color { get; set; }
 
-        public int AñoV { get; set; }
-
         public DateTime? Fecha { get; set; }
     }
 }
