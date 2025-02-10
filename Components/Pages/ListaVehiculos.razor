@@ -3,25 +3,23 @@
 
 <div class="card" style="padding:20px; border-top: 15px solid DodgerBlue; box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.2);">
     <h3 class="card-title" style="text-align:center; margin-bottom: 53px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Lista de vehiculos</h3>
-    <div style="display:flex; flex-direction:row;">
-        <div style="margin-right:10px;">
-            <label for="" class=""><strong>Nombre del auto</strong></label>
-            <select @bind="Vehiculo.Nombre" class="form-select" style="width: 450px;">
-                 <option value="">Seleccione</option>
-                 <option value="Hyundai Sonata SE">Hyundai Sonata SE</option>
-                 <option value="Lamborghini Urus">Lamborghini Urus</option>
-                 <option value="Toyota Supra Mk4">Toyota Supra Mk4</option>
-                 <option value="Camaro Zl1 1LE">Camaro Zl1 1LE</option>
-                 <option value="Kia Picanto Zenith">Kia Picanto Zenith</option>
-                 <option value="Ford Bronco Raptor">Ford Bronco Raptor</option>
-                 <option value="Mitsubishi Lancer Evo XI">Mitsubishi Lancer Evo XI</option>
-                 <option value="Tesla Model X">Tesla Model X</option>
-            </select>
-        </div>
+<div style="display:flex; flex-direction:row;">
+    <div style="margin-right:10px;">
+        <label for="" class=""><strong>Nombre del auto</strong></label>
+        <select @bind="vehiculos.Nombre" class="form-select" style="width: 450px;">
+             <option value="Hyundai Sonata SE">Hyundai Sonata SE</option>
+             <option value="Lamborghini Urus">Lamborghini Urus</option>
+             <option value="Toyota Supra Mk4">Toyota Supra Mk4</option>
+             <option value="Camaro Zl1 1LE">Camaro Zl1 1LE</option>
+             <option value="Kia Picanto Zenith">Kia Picanto Zenith</option>
+             <option value="Ford Bronco Raptor">Ford Bronco Raptor</option>
+             <option value="Mitsubishi Lancer Evo XI">Mitsubishi Lancer Evo XI</option>
+             <option value="Tesla Model X">Tesla Model X</option>
+        </select>
+    </div>
     <div>
             <label for="" class=""><strong>Color del vehiculo</strong></label>
-            <select @bind="Vehiculo.Color" class="form-select" style=" width: 450px;">
-        <option value="">Seleccione</option>
+            <select @bind="vehiculos.Color" class="form-select" style=" width: 450px;">
                 <option value="Rojo">Rojo</option>
                 <option value="Amarillo">Amarillo</option>
                 <option value="Blanco">Blanco</option>
@@ -46,11 +44,11 @@
                 <div class="card" style="padding:15px; width:860px; height: 80px; margin-top: 4px; display:flex; flex-direction:row; justify-content:space-between;">
                 <div style="margin-left:20px;">
                     <label for="" class=""><strong>Nombre</strong></label>
-                    <p>@Vehiculo.Nombre</p>
+                    <p>@item.Nombre</p>
                 </div>
                 <div>
                     <label for="" class=""><strong>Color</strong></label>
-                    <p>@Vehiculo.Color</p>
+                    <p>@item.Color</p>
                 </div>
                 <div>
                     <label for="" class=""><strong>Cuando fue agregado</strong></label>
@@ -64,14 +62,19 @@
 }
 
 @code {
-    public Vehiculo vehiculos { get; set; } = new();
+    public Vehiculo vehiculos { get; set; } = new Vehiculo();
     public List<Vehiculo> VehiculosList { get; set; } = [];
 
     void agregar()
     {
-        VehiculosList.Add(vehiculos);
-        vehiculos = new();
+        VehiculosList.Add(new Vehiculo
+        {
+        Nombre = vehiculos.Nombre,
+        Color = vehiculos.Color,
+        FechaAgregado = DateTime.Now,
+    });
 
+        vehiculos = new Vehiculo();
     }
 
     private void Eliminar(Vehiculo item)
