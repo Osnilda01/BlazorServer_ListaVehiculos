@@ -1,5 +1,6 @@
 ﻿@page "/lista"
 @rendermode InteractiveServer
+<PageTitle>Lista de vehiculos</PageTitle>
 
 <div class="card" style="padding:20px; border-top: 15px solid DodgerBlue; box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.2);">
     <h3 class="card-title" style="text-align:center; margin-bottom: 53px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Lista de vehiculos</h3>
@@ -7,6 +8,7 @@
     <div style="margin-right:10px;">
         <label for="" class=""><strong>Nombre del auto</strong></label>
         <select @bind="vehiculos.Nombre" class="form-select" style="width: 450px;">
+             <option value="">Seleccione</option>
              <option value="Hyundai Sonata SE">Hyundai Sonata SE</option>
              <option value="Lamborghini Urus">Lamborghini Urus</option>
              <option value="Toyota Supra Mk4">Toyota Supra Mk4</option>
@@ -20,6 +22,7 @@
     <div>
             <label for="" class=""><strong>Color del vehiculo</strong></label>
             <select @bind="vehiculos.Color" class="form-select" style=" width: 450px;">
+                <option value="">Seleccione</option>
                 <option value="Rojo">Rojo</option>
                 <option value="Amarillo">Amarillo</option>
                 <option value="Blanco">Blanco</option>
@@ -52,7 +55,7 @@
                 </div>
                 <div>
                     <label for="" class=""><strong>Cuando fue agregado</strong></label>
-                    <p>@DateTime.Today</p>
+                    <p>@item.FechaAgregado</p>
                 </div>
 
                 <button class="btn btn-danger" style="height:40px; width:35px; padding:5px; float:right;" @onclick="()=> Eliminar(item)">X</button>
@@ -67,14 +70,19 @@
 
     void agregar()
     {
-        VehiculosList.Add(new Vehiculo
+        if (!string.IsNullOrEmpty(vehiculos.Nombre) && !string.IsNullOrEmpty(vehiculos.Color))
         {
-        Nombre = vehiculos.Nombre,
-        Color = vehiculos.Color,
-        FechaAgregado = DateTime.Now,
-    });
+            VehiculosList.Add(new Vehiculo
+                {
+                    Nombre = vehiculos.Nombre,
+                    Color = vehiculos.Color,
+                    FechaAgregado = DateTime.Now
+                });
 
-        vehiculos = new Vehiculo();
+            vehiculos = new Vehiculo();
+
+        }
+        
     }
 
     private void Eliminar(Vehiculo item)
