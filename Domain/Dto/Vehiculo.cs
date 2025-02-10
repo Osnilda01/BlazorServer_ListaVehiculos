@@ -2,9 +2,9 @@
 {
     public class Vehiculo
     {
-        public string Nombre {  get; set; }
-        public string Color { get; set; }
+        public static string Nombre {  get; set; }
 
-        public DateTime? Fecha { get; set; }
+        public static string Color { get; set; }
+
     }
 }
